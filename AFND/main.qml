@@ -10,6 +10,7 @@ Window {
     title: qsTr("Hello World")
 
     GridLayout {
+        anchors.margins: 10
         id : grid
         anchors.fill: parent
         rows    : 12
@@ -25,12 +26,13 @@ Window {
             return rowMulti * item.Layout.rowSpan
         }
 
-        Rectangle {
-            color : 'red'
+        TextArea {
+            color: 'red'
             Layout.rowSpan   : 10
             Layout.columnSpan: 8
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
+            font.pixelSize: 18
         }
 
         Rectangle {
@@ -41,30 +43,52 @@ Window {
             Layout.preferredHeight : grid.prefHeight(this)
         }
 
-        Rectangle {
-            color : 'black'
+        Image {
             Layout.rowSpan   : 5
             Layout.columnSpan: 4
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
+
+            source: "/media/images/afnd.png"
         }
 
         Rectangle {
-            id : greenRect
-            color : 'green'
             Layout.rowSpan : 2
             Layout.columnSpan : 8
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
+            ColumnLayout {
+                height: parent.height
+                width: parent.width
+                anchors.verticalCenter: parent.verticalCenter
+                Label{
+                    text: "Hola mundl"
+                    font.pixelSize: 22
+                }
+
+                Label{
+                    text: "Hola mundl"
+                    font.pixelSize: 22
+                }
+            }
         }
 
         Rectangle {
             id: blueRect
-            color: 'blue'
             Layout.rowSpan: 2
             Layout.columnSpan: 4
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
+
+            Button {
+                width: parent.width / 2
+                height: parent.width / 6
+
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+
+                text: "Buscar"
+            }
         }
     }
 }
