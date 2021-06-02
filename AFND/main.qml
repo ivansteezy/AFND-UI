@@ -88,6 +88,10 @@ Window {
                 anchors.verticalCenter: parent.verticalCenter
 
                 text: "Buscar"
+
+                onClicked: {
+                    afndVw.PrintData()
+                }
             }
         }
     }
