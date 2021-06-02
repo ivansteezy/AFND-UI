@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+/build-AFND-Desktop_Qt_6_1_1_MSVC2019_64bit-Debug
+/AFND/.vs
+/AFND/debug
+/AFND/release
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vcxproj
