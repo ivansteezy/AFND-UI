@@ -12,5 +12,5 @@ void UI::AfndViewModel::PrintData()
 
 void UI::AfndViewModel::OpenFileDialog()
 {
-
+	qDebug() << "Abrir un archivo";
 }

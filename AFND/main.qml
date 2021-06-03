@@ -2,11 +2,12 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
+import Qt.labs.platform 1.0
 
 Window {
     visible: true
-    width: 800
-    height: 600
+    width: 1000
+    height: 800
     title: qsTr("AFND")
 
     GridLayout {
@@ -70,6 +71,9 @@ Window {
                     Layout.rowSpan: 1
                     Layout.fillWidth: true
                     text: "Abrir"
+                    onClicked: {
+                        fileDialog.open()
+                    }
                 }
 
                 Button {
@@ -129,9 +133,23 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    // afndVw.PrintData()
+                    afndVw.PrintData()
                 }
             }
         }
     }
+
+    FileDialog {
+        id: fileDialog
+        title: "Please choose a file"
+        folder: shortcuts.home
+        onAccepted: {
+            console.log("You chose: " + fileDialog.currentFile)
+        }
+        onRejected: {
+            console.log("Canceled")
+        }
+    }
 }
+
+

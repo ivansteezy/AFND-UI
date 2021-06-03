@@ -2,6 +2,7 @@
 #define FILEREADER_H
 #include <QFile>
 #include <QString>
+#include <QFileDialog>
 
 namespace Core
 {
@@ -12,7 +13,12 @@ namespace Core
 
 	public:
 		QString GetFileAsString();
-		void ReadFile();
+		void ReadFile(QString filePath);
+		void OpenFileDialog();
+
+	private:
+		QString m_filePath;
+		QFile m_file;
 	};
 }
 

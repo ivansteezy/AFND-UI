@@ -11,7 +11,12 @@ QString Core::FileReader::GetFileAsString()
 	return QString();
 }
 
-void Core::FileReader::ReadFile()
+void Core::FileReader::ReadFile(QString filepath)
+{
+
+}
+
+void Core::FileReader::OpenFileDialog()
 {
 
 }
