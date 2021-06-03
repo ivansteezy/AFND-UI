@@ -43,7 +43,6 @@ Window {
         }
 
         Rectangle {
-            color : 'pink'
             Layout.rowSpan   : 5
             Layout.columnSpan: 4
             Layout.preferredWidth  : grid.prefWidth(this)
