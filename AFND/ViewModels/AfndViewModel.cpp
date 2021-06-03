@@ -10,7 +10,21 @@ void UI::AfndViewModel::PrintData()
 	qDebug() << "Se ha presionado el boton";
 }
 
-void UI::AfndViewModel::OpenFileDialog()
+QString UI::AfndViewModel::GetFileText(QString filePath)
 {
-	qDebug() << "Abrir un archivo";
+	return m_fileReader.GetFileAsString(filePath);
+}
+
+QString UI::AfndViewModel::FileAsString() const
+{
+	return m_fileAsString;
+}
+
+void UI::AfndViewModel::FileAsString(const QString& fileAsString)
+{
+	if (fileAsString != m_fileAsString)
+	{
+		m_fileAsString = fileAsString;
+		emit FileAsStringChanged();
+	}
 }

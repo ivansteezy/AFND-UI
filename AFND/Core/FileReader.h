@@ -12,11 +12,10 @@ namespace Core
 		FileReader();
 
 	public:
-		QString GetFileAsString();
-		void ReadFile(QString filePath);
-		void OpenFileDialog();
+		QString GetFileAsString(const QString& filePath);
 
 	private:
+		QString m_fileAsString;
 		QString m_filePath;
 		QFile m_file;
 	};

@@ -61,9 +61,16 @@ Window {
                 }
 
                 TextInput {
+                    id: filePath
                     Layout.columnSpan: 2
                     Layout.rowSpan: 1
-                    text: "Ruta del archivo"
+
+                    Connections {
+                        target: afndVw
+                        onFileAsStringChanged:{
+                           filePath.text = afndVw.fileAsString
+                        }
+                    }
                 }
 
                 Button {
@@ -145,6 +152,7 @@ Window {
         folder: shortcuts.home
         onAccepted: {
             console.log("You chose: " + fileDialog.currentFile)
+            afndVw.fileAsString = fileDialog.currentFile
         }
         onRejected: {
             console.log("Canceled")
