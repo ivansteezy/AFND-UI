@@ -35,10 +35,11 @@ Window {
             Layout.preferredHeight : grid.prefHeight(this)
 
             TextArea.flickable: TextArea {
+                id: fileContent
                 font.pixelSize: 18
                 wrapMode: Text.WordWrap
+                text: "Hola"
             }
-
             ScrollBar.vertical: ScrollBar{}
         }
 
@@ -56,6 +57,7 @@ Window {
                 Label {
                     Layout.columnSpan: 2
                     Layout.rowSpan: 1
+                    font.pixelSize: 22
                     text: "Ruta del archivo"
                 }
 
@@ -63,13 +65,7 @@ Window {
                     id: filePath
                     Layout.columnSpan: 2
                     Layout.rowSpan: 1
-
-                    Connections {
-                        target: afndVw
-                        onFileAsStringChanged:{
-                           filePath.text = afndVw.fileAsString
-                        }
-                    }
+                    width: 190
                 }
 
                 Button {
@@ -88,6 +84,9 @@ Window {
                     Layout.fillWidth: true
 
                     text: "Cargar"
+                    onClicked: {
+                        afndVw.GetFileTextFromReader()
+                    }
                 }
             }
         }
@@ -111,12 +110,12 @@ Window {
                 width: parent.width
                 anchors.verticalCenter: parent.verticalCenter
                 Label{
-                    text: "Hola mundl"
+                    text: "Coincidencias de la palabra web"
                     font.pixelSize: 22
                 }
 
                 Label{
-                    text: "Hola mundl"
+                    text: "Coincidencias de la palabra e-bay"
                     font.pixelSize: 22
                 }
             }
@@ -139,7 +138,7 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    afndVw.PrintData()
+
                 }
             }
         }
@@ -151,10 +150,20 @@ Window {
         folder: shortcuts.home
         onAccepted: {
             console.log("You chose: " + fileDialog.currentFile)
-            afndVw.fileAsString = fileDialog.currentFile
+            afndVw.filePathString = fileDialog.currentFile
         }
         onRejected: {
             console.log("Canceled")
+        }
+    }
+
+    Connections {
+        target: afndVw
+        onFileAsStringChanged:{
+           fileContent.text = afndVw.fileAsString
+        }
+        onFilePathStringChanged:{
+           filePath.text = afndVw.filePathString
         }
     }
 }

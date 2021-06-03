@@ -12,7 +12,7 @@ namespace Core
 		FileReader();
 
 	public:
-		QString GetFileAsString(const QString& filePath);
+		QString GetFileAsString(QString& filePath);
 
 	private:
 		QString m_fileAsString;

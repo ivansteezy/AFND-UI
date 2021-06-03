@@ -13,24 +13,33 @@ namespace UI
 	{
 		Q_OBJECT;
 		Q_PROPERTY(QString fileAsString READ FileAsString WRITE FileAsString NOTIFY FileAsStringChanged)
+		Q_PROPERTY(QString filePathString READ FilePathString WRITE FilePathString NOTIFY FilePathStringChanged)
 
 	public:
 		explicit AfndViewModel(QObject* parent = nullptr);
 
-		Q_INVOKABLE void PrintData();
-		Q_INVOKABLE QString GetFileText(QString filePath);
+	public:
+		Q_INVOKABLE void GetFileTextFromReader();//misc
 
-		QString FileAsString() const;
-		void FileAsString(const QString& fileAsString);
+		QString FileAsString() const; //getter
+		void FileAsString(const QString& fileAsString); //setter
+
+		QString FilePathString() const;
+		void FilePathString(const QString& filepathString);
 
 	signals:
-		void FileAsStringChanged();
+		void FilePathStringChanged();
+		void FileAsStringChanged(); //signal
 
 	public slots:
 
 	private:
+		void PrintData(); //misc
+
+	private:
 		Core::FileReader m_fileReader;
 		QString m_fileAsString;
+		QString m_filePathString;
 	};
 }
 
