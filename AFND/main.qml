@@ -26,13 +26,19 @@ Window {
             return rowMulti * item.Layout.rowSpan
         }
 
-        TextArea {
-            color: 'red'
+
+        Flickable {
             Layout.rowSpan   : 10
             Layout.columnSpan: 8
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
-            font.pixelSize: 18
+
+            TextArea.flickable: TextArea {
+                font.pixelSize: 18
+                wrapMode: Text.WordWrap
+            }
+
+            ScrollBar.vertical: ScrollBar{}
         }
 
         Rectangle {
@@ -41,6 +47,39 @@ Window {
             Layout.columnSpan: 4
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
+
+            GridLayout {
+                columns: 2
+                rows: 3
+                anchors.fill: parent
+
+                Label {
+                    Layout.columnSpan: 2
+                    Layout.rowSpan: 1
+                    text: "Ruta del archivo"
+                }
+
+                TextInput {
+                    Layout.columnSpan: 2
+                    Layout.rowSpan: 1
+                    text: "Ruta del archivo"
+                }
+
+                Button {
+                    Layout.columnSpan: 1
+                    Layout.rowSpan: 1
+                    Layout.fillWidth: true
+                    text: "Abrir"
+                }
+
+                Button {
+                    Layout.columnSpan: 1
+                    Layout.rowSpan: 1
+                    Layout.fillWidth: true
+
+                    text: "Cargar"
+                }
+            }
         }
 
         Image {
@@ -90,7 +129,7 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    afndVw.PrintData()
+                    // afndVw.PrintData()
                 }
             }
         }

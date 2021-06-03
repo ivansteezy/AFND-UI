@@ -11,8 +11,8 @@ namespace Core
 		FileReader();
 
 	public:
-		Q
-
+		QString GetFileAsString();
+		void ReadFile();
 	};
 }
 

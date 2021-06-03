@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QDebug>
 
+#include "Core/FileReader.h"
+
 namespace UI
 {
 	class AfndViewModel : public QObject
@@ -19,6 +21,9 @@ namespace UI
 	signals:
 
 	public slots:
+
+	private:
+		Core::FileReader m_fileReader;
 	};
 }
 
