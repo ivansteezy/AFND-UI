@@ -5,8 +5,6 @@ Core::FileReader::FileReader()
 
 }
 
-
-//make all lowercase first
 QString Core::FileReader::GetFileAsString(QString& filePath)
 {
     auto sanitizedString = filePath.remove(0, 8);
@@ -25,7 +23,6 @@ QString Core::FileReader::GetFileAsString(QString& filePath)
     }
     m_file.close();
 
-    qDebug() << m_fileAsString;
 	return m_fileAsString;
 }
 

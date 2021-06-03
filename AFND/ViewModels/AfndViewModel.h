@@ -34,9 +34,6 @@ namespace UI
 	public slots:
 
 	private:
-		void PrintData(); //misc
-
-	private:
 		Core::FileReader m_fileReader;
 		QString m_fileAsString;
 		QString m_filePathString;

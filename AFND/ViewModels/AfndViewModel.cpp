@@ -33,13 +33,6 @@ void UI::AfndViewModel::FilePathString(const QString& filepathString)
 	}
 }
 
-
-//----------------------
-void UI::AfndViewModel::PrintData()
-{
-	qDebug() << "Se ha presionado el boton";
-}
-
 void UI::AfndViewModel::GetFileTextFromReader()
 {
 	FileAsString(m_fileReader.GetFileAsString(m_filePathString));
