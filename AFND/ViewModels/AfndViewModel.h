@@ -14,6 +14,7 @@ namespace UI
 		explicit AfndViewModel(QObject* parent = nullptr);
 
 		Q_INVOKABLE void PrintData();
+		Q_INVOKABLE void OpenFileDialog();
 
 	signals:
 

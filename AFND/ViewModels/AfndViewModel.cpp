@@ -9,3 +9,8 @@ void UI::AfndViewModel::PrintData()
 {
 	qDebug() << "Se ha presionado el boton";
 }
+
+void UI::AfndViewModel::OpenFileDialog()
+{
+
+}
