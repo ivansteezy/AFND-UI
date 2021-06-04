@@ -19,6 +19,24 @@ void UI::AfndViewModel::FileAsString(const QString& fileAsString)
 	}
 }
 
+int UI::AfndViewModel::WebCoincidences() const
+{
+	return 0;
+}
+
+void UI::AfndViewModel::WebCoincidences(int coincidences)
+{
+}
+
+int UI::AfndViewModel::EbayCoincidences() const
+{
+	return 0;
+}
+
+void UI::AfndViewModel::EbayCoincidences(int coincidences)
+{
+}
+
 QString UI::AfndViewModel::FilePathString() const
 {
 	return m_filePathString;

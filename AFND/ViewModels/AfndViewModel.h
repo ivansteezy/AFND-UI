@@ -14,6 +14,8 @@ namespace UI
 		Q_OBJECT;
 		Q_PROPERTY(QString fileAsString READ FileAsString WRITE FileAsString NOTIFY FileAsStringChanged)
 		Q_PROPERTY(QString filePathString READ FilePathString WRITE FilePathString NOTIFY FilePathStringChanged)
+		Q_PROPERTY(int webCoincidences READ WebCoincidences WRITE WebCoincidences NOTIFY WebCoincidencesChanged)
+		Q_PROPERTY(int ebayCoincidences READ EbayCoincidences WRITE EbayCoincidences NOTIFY EbayCoincidencesChanged)
 
 	public:
 		explicit AfndViewModel(QObject* parent = nullptr);
@@ -24,12 +26,20 @@ namespace UI
 		QString FileAsString() const; //getter
 		void FileAsString(const QString& fileAsString); //setter
 
+		int WebCoincidences() const;
+		void WebCoincidences(int coincidences);
+
+		int EbayCoincidences() const;
+		void EbayCoincidences(int coincidences);
+
 		QString FilePathString() const;
 		void FilePathString(const QString& filepathString);
 
 	signals:
-		void FilePathStringChanged();
 		void FileAsStringChanged(); //signal
+		void FilePathStringChanged();
+		void WebCoincidencesChanged();
+		void EbayCoincidencesChanged();
 
 	public slots:
 
