@@ -2,11 +2,12 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
+import Qt.labs.platform 1.0
 
 Window {
     visible: true
-    width: 800
-    height: 600
+    width: 1000
+    height: 800
     title: qsTr("AFND")
 
     GridLayout {
@@ -26,21 +27,68 @@ Window {
             return rowMulti * item.Layout.rowSpan
         }
 
-        TextArea {
-            color: 'red'
+
+        Flickable {
             Layout.rowSpan   : 10
             Layout.columnSpan: 8
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
-            font.pixelSize: 18
+
+            TextArea.flickable: TextArea {
+                id: fileContent
+                font.pixelSize: 18
+                wrapMode: Text.WordWrap
+                text: "Carge un archivo..."
+            }
+            ScrollBar.vertical: ScrollBar{}
         }
 
         Rectangle {
-            color : 'pink'
             Layout.rowSpan   : 5
             Layout.columnSpan: 4
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
+
+            ColumnLayout {
+                anchors.fill: parent
+                spacing: 20
+                Label {
+                    Layout.preferredWidth: parent.width / 2
+                    font.pixelSize: 22
+                    text: "Ruta del archivo"
+                }
+
+                TextInput {
+                    Layout.preferredWidth  : parent.width
+                    Layout.preferredHeight: 40
+
+                    id: filePath
+                    font.pixelSize: 13
+                    wrapMode: Text.WordWrap
+                    text: "Ruta del archivo..."
+                }
+                RowLayout {
+                    Layout.fillWidth: true
+                    Button {
+                        Layout.fillWidth: true
+                        text: "Buscar archivo"
+                        onClicked: {
+                            fileDialog.open()
+                        }
+                    }
+
+                    Button {
+                        Layout.fillWidth: true
+                        text: "Cargar archivo"
+                        onClicked: {
+                            afndVw.GetFileTextFromReader()
+                        }
+                    }
+                }
+                Item {
+                    Layout.fillHeight: true
+                }
+            }
         }
 
         Image {
@@ -62,12 +110,14 @@ Window {
                 width: parent.width
                 anchors.verticalCenter: parent.verticalCenter
                 Label{
-                    text: "Hola mundl"
+                    id: webCoincidencesLabel
+                    text: "Coincidencias de la palabra web: "
                     font.pixelSize: 22
                 }
 
                 Label{
-                    text: "Hola mundl"
+                    id: ebayCoincidencesLabel
+                    text: "Coincidencias de la palabra e-bay: "
                     font.pixelSize: 22
                 }
             }
@@ -90,9 +140,83 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    afndVw.PrintData()
+                    afndVw.BeginFind()
+                    popup.open()
                 }
             }
         }
     }
+
+    FileDialog {
+        id: fileDialog
+        title: "Please choose a file"
+        folder: shortcuts.home
+        onAccepted: {
+            console.log("You chose: " + fileDialog.currentFile)
+            afndVw.filePathString = fileDialog.currentFile
+        }
+        onRejected: {
+            console.log("Canceled")
+        }
+    }
+
+    Connections {
+        target: afndVw
+        onFileAsStringChanged:{
+           fileContent.text = afndVw.fileAsString
+        }
+        onFilePathStringChanged:{
+           filePath.text = afndVw.filePathString
+        }
+        onWebCoincidencesChanged:{
+            webCoincidencesLabel.text = "Coincidencias de la palabra web: " + afndVw.webCoincidences
+        }
+        onEbayCoincidencesChanged:{
+            ebayCoincidencesLabel.text = "Coincidencias de la palabra e-bay: " + afndVw.ebayCoincidences
+        }
+    }
+
+    Popup {
+        id: popup
+        x: Math.round((parent.width - width) / 2)
+        y: Math.round((parent.height - height) / 2)
+        width: parent.width / 2.5
+        height: 200
+        modal: true
+        focus: true
+
+        GridLayout {
+            anchors.margins: 10
+            anchors.fill: parent
+
+            columns: 12
+            rows: 12
+
+            Label {
+                Layout.columnSpan: 12
+                Layout.rowSpan: 2
+                font.pixelSize: 22
+                text: "Aviso!"
+            }
+
+            Label {
+                Layout.columnSpan: 12
+                Layout.rowSpan: 5
+                text: "Se ha terminado la busqueda!"
+            }
+
+            DialogButtonBox {
+                Layout.columnSpan: 12
+                Layout.rowSpan: 4
+                Layout.alignment: Qt.AlignRight
+                standardButtons: DialogButtonBox.Ok
+                onAccepted: {
+                    popup.close()
+                }
+            }
+        }
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent | Popup.CloseOnPressOutside
+    }
 }
+
+
