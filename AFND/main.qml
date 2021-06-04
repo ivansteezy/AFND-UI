@@ -138,7 +138,7 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-
+                    afndVw.BeginFind();
                 }
             }
         }

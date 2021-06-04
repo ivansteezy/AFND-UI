@@ -12,11 +12,11 @@ namespace Core
 
 		std::size_t GetWebCoincidences() const;
 		std::size_t GetEbayCoincidences() const;
-		void CheckIfIsCoincidence(StatePtr state);
-		bool IsSearchFinished() const;
 
 	private:
 		void FindCoincidendes();
+		void CheckIfIsCoincidence(StatePtr state);
+		bool IsSearchFinished() const;
 
 	private:
 		::Graph m_graph;

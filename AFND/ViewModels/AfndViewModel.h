@@ -6,6 +6,7 @@
 #include <QDebug>
 
 #include "Core/FileReader.h"
+#include "Core/Finder.h"
 
 namespace UI
 {
@@ -21,7 +22,8 @@ namespace UI
 		explicit AfndViewModel(QObject* parent = nullptr);
 
 	public:
-		Q_INVOKABLE void GetFileTextFromReader();//misc
+		Q_INVOKABLE void GetFileTextFromReader(); //events
+		Q_INVOKABLE void BeginFind();
 
 		QString FileAsString() const; //getter
 		void FileAsString(const QString& fileAsString); //setter
@@ -47,6 +49,9 @@ namespace UI
 		Core::FileReader m_fileReader;
 		QString m_fileAsString;
 		QString m_filePathString;
+
+		int m_webCoincidences;
+		int m_ebayCoincidences;
 	};
 }
 
