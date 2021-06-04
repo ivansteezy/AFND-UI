@@ -49,44 +49,44 @@ Window {
             Layout.preferredWidth  : grid.prefWidth(this)
             Layout.preferredHeight : grid.prefHeight(this)
 
-            GridLayout {
-                columns: 2
-                rows: 3
+            ColumnLayout {
                 anchors.fill: parent
-
+                spacing: 20
                 Label {
-                    Layout.columnSpan: 2
-                    Layout.rowSpan: 1
+                    Layout.preferredWidth: parent.width / 2
                     font.pixelSize: 22
                     text: "Ruta del archivo"
                 }
 
                 TextInput {
+                    Layout.preferredWidth  : parent.width
+                    Layout.preferredHeight: 40
+
                     id: filePath
-                    Layout.columnSpan: 2
-                    Layout.rowSpan: 1
-                    width: 190
+                    font.pixelSize: 13
+                    wrapMode: Text.WordWrap
+                    text: "Ruta del archivo..."
                 }
-
-                Button {
-                    Layout.columnSpan: 1
-                    Layout.rowSpan: 1
+                RowLayout {
                     Layout.fillWidth: true
-                    text: "Abrir"
-                    onClicked: {
-                        fileDialog.open()
+                    Button {
+                        Layout.fillWidth: true
+                        text: "Abrir"
+                        onClicked: {
+                            fileDialog.open()
+                        }
+                    }
+
+                    Button {
+                        Layout.fillWidth: true
+                        text: "Cargar"
+                        onClicked: {
+                            afndVw.GetFileTextFromReader()
+                        }
                     }
                 }
-
-                Button {
-                    Layout.columnSpan: 1
-                    Layout.rowSpan: 1
-                    Layout.fillWidth: true
-
-                    text: "Cargar"
-                    onClicked: {
-                        afndVw.GetFileTextFromReader()
-                    }
+                Item {
+                    Layout.fillHeight: true
                 }
             }
         }
@@ -140,7 +140,8 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    afndVw.BeginFind()
+                    //afndVw.BeginFind()
+                    popup.open()
                 }
             }
         }
@@ -173,6 +174,48 @@ Window {
         onEbayCoincidencesChanged:{
             ebayCoincidencesLabel.text = "Coincidencias de la palabra e-bay: " + afndVw.ebayCoincidences
         }
+    }
+
+    Popup {
+        id: popup
+        x: Math.round((parent.width - width) / 2)
+        y: Math.round((parent.height - height) / 2)
+        width: parent.width / 2.5
+        height: 200
+        modal: true
+        focus: true
+
+        GridLayout {
+            anchors.margins: 10
+            anchors.fill: parent
+
+            columns: 12
+            rows: 12
+
+            Label {
+                Layout.columnSpan: 12
+                Layout.rowSpan: 2
+                font.pixelSize: 22
+                text: "Aviso!"
+            }
+
+            Label {
+                Layout.columnSpan: 12
+                Layout.rowSpan: 5
+                text: "Se ha terminado la busqueda!"
+            }
+
+            DialogButtonBox {
+                Layout.columnSpan: 12
+                Layout.rowSpan: 4
+                Layout.alignment: Qt.AlignRight
+                standardButtons: DialogButtonBox.Ok
+                onAccepted: {
+                    popup.close()
+                }
+            }
+        }
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent | Popup.CloseOnPressOutside
     }
 }
 
