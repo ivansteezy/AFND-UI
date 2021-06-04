@@ -15,8 +15,8 @@ void UI::AfndViewModel::BeginFind()
 	Core::GraphBuilder builder;
 	Core::Finder finder(builder.GetGraph(), m_fileAsString.toLower().toStdString());
 
-	m_ebayCoincidences = finder.GetEbayCoincidences();
-	m_webCoincidences = finder.GetWebCoincidences();
+	EbayCoincidences(finder.GetEbayCoincidences());
+	WebCoincidences(finder.GetWebCoincidences());
 }
 
 QString UI::AfndViewModel::FileAsString() const

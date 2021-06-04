@@ -110,12 +110,14 @@ Window {
                 width: parent.width
                 anchors.verticalCenter: parent.verticalCenter
                 Label{
-                    text: "Coincidencias de la palabra web"
+                    id: webCoincidencesLabel
+                    text: "Coincidencias de la palabra web: "
                     font.pixelSize: 22
                 }
 
                 Label{
-                    text: "Coincidencias de la palabra e-bay"
+                    id: ebayCoincidencesLabel
+                    text: "Coincidencias de la palabra e-bay: "
                     font.pixelSize: 22
                 }
             }
@@ -138,7 +140,7 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    afndVw.BeginFind();
+                    afndVw.BeginFind()
                 }
             }
         }
@@ -164,6 +166,12 @@ Window {
         }
         onFilePathStringChanged:{
            filePath.text = afndVw.filePathString
+        }
+        onWebCoincidencesChanged:{
+            webCoincidencesLabel.text = "Coincidencias de la palabra web: " + afndVw.webCoincidences
+        }
+        onEbayCoincidencesChanged:{
+            ebayCoincidencesLabel.text = "Coincidencias de la palabra e-bay: " + afndVw.ebayCoincidences
         }
     }
 }
