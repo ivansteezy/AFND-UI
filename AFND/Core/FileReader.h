@@ -17,7 +17,6 @@ namespace Core
 	private:
 		QString m_fileAsString;
 		QString m_filePath;
-		QFile m_file;
 	};
 }
 

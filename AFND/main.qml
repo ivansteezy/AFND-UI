@@ -38,7 +38,7 @@ Window {
                 id: fileContent
                 font.pixelSize: 18
                 wrapMode: Text.WordWrap
-                text: "Hola"
+                text: "Carge un archivo..."
             }
             ScrollBar.vertical: ScrollBar{}
         }
@@ -71,7 +71,7 @@ Window {
                     Layout.fillWidth: true
                     Button {
                         Layout.fillWidth: true
-                        text: "Abrir"
+                        text: "Buscar archivo"
                         onClicked: {
                             fileDialog.open()
                         }
@@ -79,7 +79,7 @@ Window {
 
                     Button {
                         Layout.fillWidth: true
-                        text: "Cargar"
+                        text: "Cargar archivo"
                         onClicked: {
                             afndVw.GetFileTextFromReader()
                         }
@@ -140,7 +140,7 @@ Window {
                 text: "Buscar"
 
                 onClicked: {
-                    //afndVw.BeginFind()
+                    afndVw.BeginFind()
                     popup.open()
                 }
             }

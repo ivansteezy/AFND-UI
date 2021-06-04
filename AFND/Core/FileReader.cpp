@@ -7,21 +7,23 @@ Core::FileReader::FileReader()
 
 QString Core::FileReader::GetFileAsString(QString& filePath)
 {
+    QFile file;
+    m_fileAsString = "";
     auto sanitizedString = filePath.remove(0, 8);
-    m_file.setFileName(sanitizedString);
+    file.setFileName(sanitizedString);
 
-    if (!m_file.open(QIODevice::ReadOnly | QIODevice::Text)) 
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         qDebug() << "Error reading file";
         return QString();
     }
 
-    QTextStream in(&m_file);
-    while (!in.atEnd()) 
+    QTextStream in(&file);
+    while (!in.atEnd())
     {
         m_fileAsString.append(in.readLine());
     }
-    m_file.close();
+    file.close();
 
 	return m_fileAsString;
 }
