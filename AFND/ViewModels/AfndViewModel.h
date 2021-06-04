@@ -22,11 +22,11 @@ namespace UI
 		explicit AfndViewModel(QObject* parent = nullptr);
 
 	public:
-		Q_INVOKABLE void GetFileTextFromReader(); //events
+		Q_INVOKABLE void GetFileTextFromReader();
 		Q_INVOKABLE void BeginFind();
 
-		QString FileAsString() const; //getter
-		void FileAsString(const QString& fileAsString); //setter
+		QString FileAsString() const;
+		void FileAsString(const QString& fileAsString);
 
 		int WebCoincidences() const;
 		void WebCoincidences(int coincidences);
@@ -38,7 +38,7 @@ namespace UI
 		void FilePathString(const QString& filepathString);
 
 	signals:
-		void FileAsStringChanged(); //signal
+		void FileAsStringChanged();
 		void FilePathStringChanged();
 		void WebCoincidencesChanged();
 		void EbayCoincidencesChanged();
