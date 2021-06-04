@@ -1,5 +1,6 @@
 #ifndef FILEREADER_H
 #define FILEREADER_H
+
 #include <QFile>
 #include <QString>
 #include <QFileDialog>

@@ -8,7 +8,7 @@ Window {
     visible: true
     width: 1000
     height: 800
-    title: qsTr("AFND")
+    title: qsTr("Automata finito no-determinista")
 
     GridLayout {
         anchors.margins: 10

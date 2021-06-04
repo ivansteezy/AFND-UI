@@ -1,5 +1,5 @@
 #ifndef AFNDVIEWMODEL_H
-#define AFNDVIEWMODEL_h
+#define AFNDVIEWMODEL_H
 
 #include <QObject>
 #include <QString>
@@ -25,15 +25,19 @@ namespace UI
 		Q_INVOKABLE void GetFileTextFromReader();
 		Q_INVOKABLE void BeginFind();
 
+		[[nodiscard]]
 		QString FileAsString() const;
 		void FileAsString(const QString& fileAsString);
 
+		[[nodiscard]]
 		int WebCoincidences() const;
 		void WebCoincidences(int coincidences);
 
+		[[nodiscard]]
 		int EbayCoincidences() const;
 		void EbayCoincidences(int coincidences);
 
+		[[nodiscard]]
 		QString FilePathString() const;
 		void FilePathString(const QString& filepathString);
 

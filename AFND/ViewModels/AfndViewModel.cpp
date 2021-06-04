@@ -19,6 +19,7 @@ void UI::AfndViewModel::BeginFind()
 	WebCoincidences(finder.GetWebCoincidences());
 }
 
+[[nodiscard]]
 QString UI::AfndViewModel::FileAsString() const
 {
 	return m_fileAsString;
@@ -33,6 +34,7 @@ void UI::AfndViewModel::FileAsString(const QString& fileAsString)
 	}
 }
 
+[[nodiscard]]
 QString UI::AfndViewModel::FilePathString() const
 {
 	return m_filePathString;
@@ -47,6 +49,7 @@ void UI::AfndViewModel::FilePathString(const QString& filepathString)
 	}
 }
 
+[[nodiscard]]
 int UI::AfndViewModel::WebCoincidences() const
 {
 	return m_webCoincidences;
@@ -61,6 +64,7 @@ void UI::AfndViewModel::WebCoincidences(int webCoincidences)
 	}
 }
 
+[[nodiscard]]
 int UI::AfndViewModel::EbayCoincidences() const
 {
 	return m_ebayCoincidences;

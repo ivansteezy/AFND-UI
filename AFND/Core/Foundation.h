@@ -1,5 +1,11 @@
-#ifndef FOUNDATION_G
-#define FOUNDATION_G
+/*
+* Ivan Oswaldo Ayala Martinez   19310216
+* David Alonso Trejo Natividad  19310211
+* Junio, 2021
+*/
+
+#ifndef FOUNDATION_H
+#define FOUNDATION_H
 
 #include <memory>
 #include <string>
@@ -41,4 +47,3 @@ struct Coincidences
 };
 
 #endif
-

@@ -27,4 +27,3 @@ QString Core::FileReader::GetFileAsString(QString& filePath)
 
 	return m_fileAsString;
 }
-
