@@ -20,10 +20,9 @@ namespace Core
 
 	private:
 		::Graph m_graph;
-		Coincidences m_coincidences;
-		bool m_searchFinished;
 		std::string m_input;
-		StatePtr aux;
+		bool m_searchFinished;
+		Coincidences m_coincidences;
 	};
 }
 
