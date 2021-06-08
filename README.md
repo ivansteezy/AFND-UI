@@ -11,7 +11,7 @@ This is an academic project, for my automata theory class.
 | ------- | --- |
 
 ## Usage
-Just download the latest release from [https://github.com/ivansteezy/AFND-UI/releases/tag/Version1.0](here), unzip the folder and run de ```AFND.exe``` application.
+Just download the latest release from [here](https://github.com/ivansteezy/AFND-UI/releases/tag/Version1.0), unzip the folder and run de ```AFND.exe``` application.
 
 ## Demo
 There is a video demo on my youtube channel lol 
