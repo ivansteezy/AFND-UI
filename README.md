@@ -10,6 +10,9 @@ This is an academic project, for my automata theory class.
 | <img src="https://github.com/ivansteezy/AFND-UI/blob/main/AFND/images/result.png"  width=520> | <img src="https://github.com/ivansteezy/AFND-UI/blob/main/AFND/images/main%20window.png"  width=520> | 
 | ------- | --- |
 
+## Usage
+Just download the latest release from [https://github.com/ivansteezy/AFND-UI/releases/tag/Version1.0](here), unzip the folder and run de ```AFND.exe``` application.
+
 ## Demo
 There is a video demo on my youtube channel lol 
 - https://youtu.be/wL4Em8Jvbh8
