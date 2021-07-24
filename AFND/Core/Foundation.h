@@ -1,6 +1,5 @@
 /*
 * Ivan Oswaldo Ayala Martinez   19310216
-* David Alonso Trejo Natividad  19310211
 * Junio, 2021
 */
 
